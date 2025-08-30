@@ -1,0 +1,66 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafc;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.material-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-left: 6px solid  rgb(8, 46, 46);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+
+.material-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.material-card p {
+    margin: 8px 0;
+    color: #333;
+}
+
+.button-group {
+    margin-top: 15px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 16px;
+    margin-right: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    transition: background-color 0.2s ease;
+}
+
+.primary-btn {
+    background-color: rgb(8, 46, 46);
+    color: white;
+}
+
+.primary-btn:hover {
+    background-color: rgb(8, 46, 46);
+}
+
+.secondary-btn {
+    background-color: #6c757d;
+    color: white;
+}
+
+.secondary-btn:hover {
+    background-color: #5a6268;
+}

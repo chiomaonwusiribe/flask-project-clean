@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rate Documents</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles2.css')}}">
+</head>
+<body>
+    <div class="container">
+        {% for material in materials %}
+            <div class="material-card">
+                <p><strong>Course Title:</strong> {{ material.course_title }}</p>
+                <p><strong>Lecturer:</strong> {{ material.course_lecturer }}</p>
+
+                <div class="button-group">
+                    <a href="{{ url_for('view_document', material_id=material.id, doc_type='material') }}" class="btn primary-btn">
+                        📘 View Course Material
+                    </a>
+                    <a href="{{ url_for('view_document', material_id=material.id, doc_type='outline') }}" class="btn secondary-btn">
+                        📄 View Course Outline
+                    </a>   
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+

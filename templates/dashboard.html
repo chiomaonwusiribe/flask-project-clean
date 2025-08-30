@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body class ="db">
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav> -->
+    
+    <div class="container mt-4">
+        <h2 class="text-center d-flex justify-content-between">Welcome, Lecturer <span>  <a href="{{ url_for('logout') }}" class="indexb">Logout</a></span></h2>
+        <p>Upload your text file for analysis.</p>
+
+        <form action='/dashboard' method="POST" enctype="multipart/form-data" class="upload-form">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <input type="file" name="file" class="form-control" placeholder="material_file" accept=".docx, .pdf">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <input type="file" name="syllabus_file" class="form-control" placeholder="syllabus_file" accept=".docx, .pdf">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <input type="text" name="course_lecturer" class="form-control" placeholder="Lecturer">
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </div>
+        </form>    
+        
+        <h2 class="mt-4">Analysis Results:</h2> 
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Course Lecturer</th>
+                        <th>Total Words</th>
+                        <th>Total Sentences</th>
+                        <th>FRE Score</th>
+                        <th>CC Score</th>
+                        <th>TC Score</th>
+                        <th>CCTC-Enhanced FRE</th>
+                        <th>Gunning Fog</th>
+                        <th>TF-IDF</th>
+                        <th>LSA</th>
+                        <th>SMOG</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in results %}
+                    <tr>
+                        <td>{{ result.course_lecturer }}</td>
+                        <td>{{ result.total_words }}</td>
+                        <td>{{ result.total_sentences }}</td>
+                        <td>{{ result.fre_score }}</td>
+                        <td>{{ result.cc_score }}</td>
+                        <td>{{ result.topic_coverage_score }}</td>
+                        <td>{{ result.cctc_enhanced_fre }}</td>
+                        <td>{{ result.gunfog_score }}</td>
+                        <td>{{ result.tfidf_score }}</td>
+                        <td>{{ result.lsa_score }}</td>
+                        <td>{{ result.smog_score }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                
+<!-- {% for result in results %}
+    <tr>
+        <td>{{ result.course_title }}</td>
+        <td>{{ result.course_lecturer }}</td>
+        <td>
+            <a href="{{ url_for('rate_document', analysis_id=result.id) }}" class="btn btn-primary">
+                Rate
+            </a>
+        </td>
+    </tr>
+{% endfor %} --> 
+    </div> 
+</body>
+    <!-- <footer class="text-center mt-4">
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+    </footer> -->
+</html>
